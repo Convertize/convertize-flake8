@@ -67,12 +67,12 @@ class ShopVisitor(ast.NodeVisitor):
     def visit_Call(self, node):
         if isinstance(node.func, ast.Attribute):
             self.check_for_b005(node)
-            for bug in (B312,):
-                if node.func.attr in bug.methods:
-                    call_path = ".".join(self.compose_call_path(node.func.value))
-                    if call_path in bug.invalid_paths:
-                        self.errors.append(bug(node.lineno, node.col_offset))
-                    break
+            # for bug in (B312,):
+            #     if node.func.attr in bug.methods:
+            #         call_path = ".".join(self.compose_call_path(node.func.value))
+            #         if call_path in bug.invalid_paths:
+            #             self.errors.append(bug(node.lineno, node.col_offset))
+            #         break
         else:
             self.check_for_b004(node)
             self.check_for_b009_b010(node)
