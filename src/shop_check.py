@@ -45,22 +45,24 @@ class ShopVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node):
+        pass
         # if node.module == "__future__":
         #     for nameproxy in node.names:
         #         if nameproxy.name == "absolute_import":
         #             self.has_absolute_import = True
         #             break
 
-        if node.module in B317.modules:
-            for nameproxy in node.names:
-                if nameproxy.name in B317.names:
-                    self.errors.append(B317(node.lineno, node.col_offset))
-                    break
+        # if node.module in B317.modules:
+        #     for nameproxy in node.names:
+        #         if nameproxy.name in B317.names:
+        #             self.errors.append(B317(node.lineno, node.col_offset))
+        #             break
 
     def visit_Import(self, node):
-        for alias in node.names:
-            if alias.name.split(".", 1)[0] in B317.modules:
-                self.errors.append(B317(node.lineno, node.col_offset))
+        pass
+        # for alias in node.names:
+        #     if alias.name.split(".", 1)[0] in B317.modules:
+        #         self.errors.append(B317(node.lineno, node.col_offset))
 
     def visit_Call(self, node):
         if isinstance(node.func, ast.Attribute):
