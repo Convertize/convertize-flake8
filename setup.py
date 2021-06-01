@@ -1,7 +1,7 @@
 import sys
 
-if sys.version_info[:2] < (3, 6):
-    sys.exit("convertize-flake8 requires at least Python 3.6.")
+# if sys.version_info[:2] < (3, 6):
+#     sys.exit("convertize-flake8 requires at least Python 3.6.")
 
 from setuptools import setup
 
